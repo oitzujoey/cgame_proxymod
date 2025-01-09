@@ -35,6 +35,7 @@
 #include "help.h"
 #include "pitch.h"
 #include "version.h"
+#include "aircontrol.h"
 
 static vmCvar_t hud;
 static vmCvar_t version;
@@ -57,6 +58,7 @@ void init_hud(void)
   init_bbox();
   init_cgaz();
   init_compass();
+  init_aircontrol();
   init_entityStates();
   init_gl();
   init_jump();
@@ -81,6 +83,7 @@ void update_hud(void)
   update_bbox();
   update_cgaz();
   update_compass();
+  update_aircontrol();
   update_entityStates();
   update_gl();
   update_jump();
@@ -101,6 +104,7 @@ void draw_hud(void)
   draw_cgaz();
   draw_snap();
   draw_pitch();
+  draw_aircontrol();
 
   draw_ammo();
   draw_jump();

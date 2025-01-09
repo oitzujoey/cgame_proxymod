@@ -425,3 +425,28 @@ void CG_DrawCharYaw(float angle, float yaw, float y, float w, float h, uint8_t c
   CG_DrawChar(x - w / 2, y, w, h, ch);
   trap_R_SetColor(NULL);
 }
+
+void CG_DrawCharYawPitch(float yaw_angle, float pitch_angle, float yaw, float pitch, float w, float h, uint8_t ch, vec4_t const color)
+{
+  yaw_angle = AngleNormalizePI(yaw_angle - yaw);
+  pitch_angle = AngleNormalizePI((pitch_angle + pitch) / 2.0);
+  if (!AngleInFovX(yaw_angle)) return; // TODO: wide chars => if half of char goes out of screen, nothing will be drawn
+  if (!AngleInFovY(pitch_angle)) return; // TODO: wide chars => if half of char goes out of screen, nothing will be drawn
+
+  float const x = ProjectionX(yaw_angle);
+  float const y = ProjectionY(-pitch_angle);
+  trap_R_SetColor(color);
+  CG_DrawChar(x - w / 2, y, w, h, ch);
+  trap_R_SetColor(NULL);
+}
+
+void CG_DrawAircontrol(float angle, float yaw, float y, float w, float h, qhandle_t img, vec4_t const color)
+{
+  angle = AngleNormalizePI(angle - yaw);
+  if (!AngleInFovX(angle)) return; // TODO: wide chars => if half of char goes out of screen, nothing will be drawn
+
+  float const x = ProjectionX(angle);
+  trap_R_SetColor(color);
+  CG_DrawPic( x - w / 2, y, w, h, img );
+  trap_R_SetColor(NULL);
+}

@@ -56,5 +56,7 @@ void CG_DrawLinePitch(float angle, float pitch, float x, float w, float h, vec4_
 void CG_FillAngleYaw(float start, float end, float yaw, float y, float h, vec4_t const color);
 void CG_DrawLineYaw(float angle, float yaw, float y, float w, float h, vec4_t const color);
 void CG_DrawCharYaw(float angle, float yaw, float y, float w, float h, uint8_t ch, vec4_t const color);
+void CG_DrawCharYawPitch(float yaw_angle, float pitch_angle, float yaw, float pitch, float w, float h, uint8_t ch, vec4_t const color);
+void CG_DrawAircontrol(float angle, float yaw, float y, float w, float h, qhandle_t img, vec4_t const color);
 
 #endif // CG_DRAW_H

@@ -25,6 +25,7 @@
 #include "cg_hud.h"
 #include "cg_local.h"
 #include "cg_syscall.h"
+#include "aircontrol.h"
 #include "defrag.h"
 #include "q_assert.h"
 
